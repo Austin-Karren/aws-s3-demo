@@ -37,6 +37,7 @@ class App extends Component {
   };
 
   uploadFile = (file, signedRequest, url) => {
+    console.log(signedRequest);
     const options = {
       headers: {
         'Content-Type': file.type,
@@ -46,8 +47,10 @@ class App extends Component {
     axios
       .put(signedRequest, file, options)
       .then(response => {
+        console.log(response);
         this.setState({ isUploading: false, url });
         // THEN DO SOMETHING WITH THE URL. SEND TO DB USING POST REQUEST OR SOMETHING
+        
       })
       .catch(err => {
         this.setState({
